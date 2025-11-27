@@ -11,60 +11,62 @@
             font-family: 'Montserrat', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f0f2f5; /* Light subtle background */
+            background-color: #f4f4f4; /* A light background, close to the image's border */
             color: #333;
             min-height: 100vh;
             display: flex;
             justify-content: center;
+            align-items: flex-start; /* Align to start to prevent vertical centering */
         }
 
         /* Main Container for the Profile Content */
         .profile-wrapper {
-            width: 100%;
-            max-width: 1200px; /* Max width for large screens */
+            width: 900px; /* Fixed width as per the original CV image */
+            height: fit-content; /* Adjust height based on content */
             display: flex;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-            margin: 40px 20px; /* Margin to keep it off the edges */
-            border-radius: 12px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1); /* Subtle shadow like the CV */
+            margin: 40px auto; /* Centered with top/bottom margin */
+            border-radius: 8px; /* Slightly rounded corners */
             overflow: hidden;
-            background-color: #fff;
+            background-color: #fff; /* Overall white background, left panel will override */
         }
 
         /* Left Sidebar/Panel (Personal Info/Contact) */
         .left-panel {
-            width: 300px; /* Fixed width for the sidebar */
-            background-color: #3c544d; /* Darker, professional color */
-            padding: 40px 30px;
-            color: #fff;
+            width: 35%; /* Fixed width as per the original CV image */
+            background-color: #f8f8f8; /* Light gray from the original CV */
+            padding: 30px;
+            color: #333; /* Darker text for readability */
             text-align: center;
             box-sizing: border-box;
             display: flex;
             flex-direction: column;
             align-items: center;
+            border-right: 1px solid #eee; /* Divider line */
         }
 
         .profile-pic {
-            width: 180px;
-            height: 180px;
+            width: 150px; /* Size from original CV */
+            height: 150px;
             border-radius: 50%;
             object-fit: cover;
-            margin-bottom: 25px;
-            border: 6px solid #f0f2f5; /* Light border to stand out */
+            margin-bottom: 20px;
+            border: 4px solid #ddd; /* Softer border */
         }
 
         .name {
-            font-size: 1.8em;
+            font-size: 2em; /* Size from original CV */
             font-weight: 700;
             margin-bottom: 5px;
-            color: #fff;
+            color: #333;
         }
 
         .title {
-            font-size: 0.9em;
-            font-weight: 300;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            color: #a0a89d;
+            font-size: 1em; /* Size from original CV */
+            font-weight: 400; /* Regular weight */
+            letter-spacing: normal;
+            text-transform: uppercase; /* Still uppercase */
+            color: #777;
             margin-bottom: 40px;
         }
 
@@ -78,9 +80,10 @@
             font-size: 1.1em;
             font-weight: 600;
             margin-bottom: 20px;
-            color: #fff;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-            padding-bottom: 5px;
+            color: #333;
+            border-bottom: none; /* No border for contact header */
+            padding-bottom: 0;
+            text-transform: uppercase;
         }
 
         .contact-item {
@@ -89,83 +92,79 @@
             margin-bottom: 15px;
             font-size: 0.9em;
             line-height: 1.4;
+            color: #555;
         }
 
-        /* Placeholder for icons (using text/emoji for simplicity in static code) */
         .contact-item .icon {
             width: 20px;
             height: 20px;
             margin-right: 15px;
-            color: #f0f2f5;
+            color: #666; /* Darker icons */
             font-size: 1.2em;
         }
 
         /* Right Main Content Panel */
         .right-panel {
-            flex-grow: 1; /* Takes up the rest of the space */
-            padding: 40px 50px;
+            flex-grow: 1;
+            padding: 30px; /* Padding from original CV */
             box-sizing: border-box;
+            background-color: #fff; /* Explicitly white for right panel */
         }
 
         .section {
-            margin-bottom: 40px;
-            padding-bottom: 20px;
-            border-bottom: 1px solid #eee;
+            margin-bottom: 30px; /* Spacing from original CV */
+            padding-bottom: 0; /* No padding */
+            border-bottom: none; /* No border for sections */
         }
 
         .section-title {
-            font-size: 1.8em;
-            font-weight: 700;
-            color: #444;
-            margin-bottom: 20px;
+            font-size: 1.5em; /* Size from original CV */
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 15px; /* Spacing from original CV */
             position: relative;
+            padding-bottom: 5px; /* For the subtle underline */
+            border-bottom: 2px solid #eee; /* Subtle underline as in CV */
         }
 
         .section-title::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: -5px;
-            width: 50px;
-            height: 3px;
-            background-color: #3c544d; /* Matching sidebar color */
+            content: none; /* Remove the accent line */
         }
 
         .about-me-text {
-            line-height: 1.8;
+            line-height: 1.6; /* Line height from original CV */
             color: #555;
-            font-size: 1em;
+            font-size: 0.95em; /* Slightly smaller font */
         }
 
         /* Skills Section Styling */
         .skills-list {
             list-style: none;
             padding: 0;
-            display: grid;
-            grid-template-columns: repeat(2, 1fr); /* Two columns for skills */
-            gap: 20px;
+            display: block; /* Revert to block layout */
+            gap: 0;
         }
 
         .skill-item {
-            margin-bottom: 10px;
+            margin-bottom: 15px; /* Spacing from original CV */
         }
 
         .skill-name {
-            font-weight: 600;
+            font-weight: 500;
             color: #444;
             margin-bottom: 5px;
             display: block;
         }
 
         .skill-bar-container {
-            background-color: #e9ecef;
+            background-color: #eee; /* Lighter gray for empty part */
             border-radius: 5px;
-            height: 10px;
+            height: 8px; /* Height from original CV */
             overflow: hidden;
         }
 
         .skill-bar {
-            background-color: #5d8e78; /* Brighter accent color */
+            background-color: #666; /* Darker gray for filled part */
             height: 100%;
             border-radius: 5px;
             transition: width 0.8s ease-in-out;
@@ -184,39 +183,42 @@
         }
 
         .education-item, .experience-item {
-            margin-bottom: 25px;
-            padding-left: 25px;
+            margin-bottom: 20px; /* Spacing from original CV */
+            padding-left: 25px; /* Indent for bullet */
             position: relative;
         }
 
         .experience-item::before, .education-item::before {
-            content: '•'; /* Simple bullet point timeline effect */
+            content: ''; /* Remove emoji bullet */
             position: absolute;
             left: 0;
-            top: 0;
-            font-size: 1.5em;
-            color: #5d8e78;
+            top: 5px; /* Align with text */
+            width: 10px;
+            height: 10px;
+            background-color: #666; /* Dark gray dot */
+            border-radius: 50%;
+            border: 2px solid #eee; /* Light border around dot */
         }
 
         .experience-date, .education-date {
-            font-size: 0.85em;
-            font-weight: 600;
+            font-size: 0.9em;
+            font-weight: 400; /* Regular weight */
             color: #777;
             margin-bottom: 5px;
             display: block;
         }
 
         .experience-title, .education-degree {
-            font-weight: 700;
+            font-weight: 600;
             color: #444;
             margin-bottom: 3px;
-            font-size: 1.1em;
+            font-size: 1em;
         }
 
         .experience-company, .education-school {
             color: #666;
-            font-size: 0.9em;
-            margin-bottom: 10px;
+            font-size: 0.95em;
+            margin-bottom: 0; /* No extra margin */
         }
 
         .experience-description {
@@ -224,6 +226,7 @@
             color: #555;
             font-size: 0.9em;
             padding-left: 20px;
+            list-style-type: disc; /* Explicit disc bullets */
         }
 
         .experience-description li {
@@ -231,17 +234,20 @@
             line-height: 1.6;
         }
 
-        /* Responsive Adjustments (Optional but Recommended for a website) */
+        /* Responsive Adjustments (Optional, but removed the full-width behavior) */
         @media (max-width: 900px) {
             .profile-wrapper {
+                width: 100%; /* Allow full width on small screens */
                 flex-direction: column;
-                margin: 20px 0;
+                margin: 0; /* No margin on small screens */
                 border-radius: 0;
                 box-shadow: none;
             }
             .left-panel {
                 width: 100%;
                 padding: 30px;
+                border-right: none; /* No border on stacked layout */
+                border-bottom: 1px solid #eee; /* Add bottom border */
             }
             .right-panel {
                 padding: 30px 20px;
@@ -255,10 +261,10 @@
 <body>
     <div class="profile-wrapper">
         <div class="left-panel">
-          <img src="nica.jpg" alt=""Monica E. Bibit" class="profile-pic">
+            <img src="nica.jpg" alt=""Monica E. Bibit" class="profile-pic">
             
             <div class="name">Monica E. Bibit</div>
-            <div class="title">STUDENT / IT ENTHUSIAST</div>
+            <div class="title">STUDENT</div>
 
             <div class="contact-info">
                 <h3>CONTACT</h3>
@@ -280,7 +286,7 @@
         <div class="right-panel">
             <div class="section">
                 <h2 class="section-title">ABOUT ME</h2>
-                <p class="about-me-text">Dedicated and motivated college student. Developed strong skills in technical tools through my previous work and academic projects. Passionate to apply my knowledge and bring **adaptability** and a **willingness to learn** to an organization while gaining valuable experience to support my future career in Information Technology.</p>
+                <p class="about-me-text">Dedicated and motivated college student. Developed strong skills in technical tools through my previous work and academic projects. Passionate to apply my knowledge and bring adaptability, and a willingness to an organization while gaining valuable experience to support my future career.</p>
             </div>
 
             <div class="section">
@@ -313,9 +319,8 @@
                         <div class="experience-title">RETAIL CUSTOMER SERVICE REPRESENTATIVE</div>
                         <div class="experience-company">CONCENTRIX COMPANY</div>
                         <ul class="experience-description">
-                            <li>Handled customer questions and concerns, providing effective answers and responses regarding products and services.</li>
-                            <li>Managed transactions including taking orders, calculating charges, and accurately processing billing or payments.</li>
-                            <li>Aided individuals in finding appropriate products, explaining features, and resolving customer complaints efficiently.</li>
+                            <li>Listen to customer's questions and concerns and provide answers or responses. Provide information about products and services. Take orders, calculate charges, and process billing or payments.</li>
+                            <li>Helping individuals find products, answering questions about product features, and resolving complaints.</li>
                         </ul>
                     </li>
                 </ul>
@@ -331,8 +336,10 @@
                     </li>
                     <li class="education-item">
                         <span class="education-date">2021-2023</span>
-                        <div class="education-degree">SENIOR HIGH SCHOOL (STEM TRACK)</div>
-                        <div class="education-school">Colegio De San Lorenzo / College of St. Catherine Quezon City</div>
+                        <div class="education-degree">SENIOR HIGH SCHOOL</div>
+                        <div class="education-school">SCIENCE, TECHNOLOGY, ENGINEERING, AND MATHEMATICS</div>
+                        <div class="education-school">Colegio De San Lorenzo</div>
+                        <div class="education-school">College of St. Catherine Quezon City</div>
                     </li>
                 </ul>
             </div>
