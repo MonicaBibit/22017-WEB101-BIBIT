@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monica E. Bibit - Web Profile</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* General Reset and Base Styles */
+        body {
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f2f5; /* Light subtle background */
+            color: #333;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+        }
+
+        /* Main Container for the Profile Content */
+        .profile-wrapper {
+            width: 100%;
+            max-width: 1200px; /* Max width for large screens */
+            display: flex;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            margin: 40px 20px; /* Margin to keep it off the edges */
+            border-radius: 12px;
+            overflow: hidden;
+            background-color: #fff;
+        }
+
+        /* Left Sidebar/Panel (Personal Info/Contact) */
+        .left-panel {
+            width: 300px; /* Fixed width for the sidebar */
+            background-color: #3c544d; /* Darker, professional color */
+            padding: 40px 30px;
+            color: #fff;
+            text-align: center;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .profile-pic {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 25px;
+            border: 6px solid #f0f2f5; /* Light border to stand out */
+        }
+
+        .name {
+            font-size: 1.8em;
+            font-weight: 700;
+            margin-bottom: 5px;
+            color: #fff;
+        }
+
+        .title {
+            font-size: 0.9em;
+            font-weight: 300;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #a0a89d;
+            margin-bottom: 40px;
+        }
+
+        .contact-info {
+            width: 100%;
+            margin-top: 20px;
+            text-align: left;
+        }
+
+        .contact-info h3 {
+            font-size: 1.1em;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #fff;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            padding-bottom: 5px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            font-size: 0.9em;
+            line-height: 1.4;
+        }
+
+        /* Placeholder for icons (using text/emoji for simplicity in static code) */
+        .contact-item .icon {
+            width: 20px;
+            height: 20px;
+            margin-right: 15px;
+            color: #f0f2f5;
+            font-size: 1.2em;
+        }
+
+        /* Right Main Content Panel */
+        .right-panel {
+            flex-grow: 1; /* Takes up the rest of the space */
+            padding: 40px 50px;
+            box-sizing: border-box;
+        }
+
+        .section {
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .section-title {
+            font-size: 1.8em;
+            font-weight: 700;
+            color: #444;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -5px;
+            width: 50px;
+            height: 3px;
+            background-color: #3c544d; /* Matching sidebar color */
+        }
+
+        .about-me-text {
+            line-height: 1.8;
+            color: #555;
+            font-size: 1em;
+        }
+
+        /* Skills Section Styling */
+        .skills-list {
+            list-style: none;
+            padding: 0;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); /* Two columns for skills */
+            gap: 20px;
+        }
+
+        .skill-item {
+            margin-bottom: 10px;
+        }
+
+        .skill-name {
+            font-weight: 600;
+            color: #444;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        .skill-bar-container {
+            background-color: #e9ecef;
+            border-radius: 5px;
+            height: 10px;
+            overflow: hidden;
+        }
+
+        .skill-bar {
+            background-color: #5d8e78; /* Brighter accent color */
+            height: 100%;
+            border-radius: 5px;
+            transition: width 0.8s ease-in-out;
+        }
+
+        /* Skill bar widths based on visual estimation */
+        .skill-bar.time { width: 80%; }
+        .skill-bar.problem { width: 75%; }
+        .skill-bar.communication { width: 85%; }
+        .skill-bar.creativity { width: 70%; }
+
+        /* Experience and Education Styling */
+        .education-list, .work-experience-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .education-item, .experience-item {
+            margin-bottom: 25px;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .experience-item::before, .education-item::before {
+            content: '•'; /* Simple bullet point timeline effect */
+            position: absolute;
+            left: 0;
+            top: 0;
+            font-size: 1.5em;
+            color: #5d8e78;
+        }
+
+        .experience-date, .education-date {
+            font-size: 0.85em;
+            font-weight: 600;
+            color: #777;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        .experience-title, .education-degree {
+            font-weight: 700;
+            color: #444;
+            margin-bottom: 3px;
+            font-size: 1.1em;
+        }
+
+        .experience-company, .education-school {
+            color: #666;
+            font-size: 0.9em;
+            margin-bottom: 10px;
+        }
+
+        .experience-description {
+            margin-top: 10px;
+            color: #555;
+            font-size: 0.9em;
+            padding-left: 20px;
+        }
+
+        .experience-description li {
+            margin-bottom: 5px;
+            line-height: 1.6;
+        }
+
+        /* Responsive Adjustments (Optional but Recommended for a website) */
+        @media (max-width: 900px) {
+            .profile-wrapper {
+                flex-direction: column;
+                margin: 20px 0;
+                border-radius: 0;
+                box-shadow: none;
+            }
+            .left-panel {
+                width: 100%;
+                padding: 30px;
+            }
+            .right-panel {
+                padding: 30px 20px;
+            }
+            .skills-list {
+                grid-template-columns: 1fr; /* Single column on smaller screens */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="profile-wrapper">
+        <div class="left-panel">
+          <img src="nica.jpg" alt=""Monica E. Bibit" class="profile-pic">
+            
+            <div class="name">Monica E. Bibit</div>
+            <div class="title">STUDENT / IT ENTHUSIAST</div>
+
+            <div class="contact-info">
+                <h3>CONTACT</h3>
+                <div class="contact-item">
+                    <span class="icon">📧</span> 
+                    <span>nicszap@gmail.com</span>
+                </div>
+                <div class="contact-item">
+                    <span class="icon">📞</span>
+                    <span>+63 968 310 5171</span>
+                </div>
+                <div class="contact-item">
+                    <span class="icon">📍</span>
+                    <span>Quezon City, Philippines</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="right-panel">
+            <div class="section">
+                <h2 class="section-title">ABOUT ME</h2>
+                <p class="about-me-text">Dedicated and motivated college student. Developed strong skills in technical tools through my previous work and academic projects. Passionate to apply my knowledge and bring **adaptability** and a **willingness to learn** to an organization while gaining valuable experience to support my future career in Information Technology.</p>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title">SKILLS</h2>
+                <ul class="skills-list">
+                    <li class="skill-item">
+                        <span class="skill-name">Time Management</span>
+                        <div class="skill-bar-container"><div class="skill-bar time"></div></div>
+                    </li>
+                    <li class="skill-item">
+                        <span class="skill-name">Problem Solving</span>
+                        <div class="skill-bar-container"><div class="skill-bar problem"></div></div>
+                    </li>
+                    <li class="skill-item">
+                        <span class="skill-name">Communication</span>
+                        <div class="skill-bar-container"><div class="skill-bar communication"></div></div>
+                    </li>
+                    <li class="skill-item">
+                        <span class="skill-name">Creativity</span>
+                        <div class="skill-bar-container"><div class="skill-bar creativity"></div></div>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title">WORK EXPERIENCE</h2>
+                <ul class="work-experience-list">
+                    <li class="experience-item">
+                        <span class="experience-date">2023-2024</span>
+                        <div class="experience-title">RETAIL CUSTOMER SERVICE REPRESENTATIVE</div>
+                        <div class="experience-company">CONCENTRIX COMPANY</div>
+                        <ul class="experience-description">
+                            <li>Handled customer questions and concerns, providing effective answers and responses regarding products and services.</li>
+                            <li>Managed transactions including taking orders, calculating charges, and accurately processing billing or payments.</li>
+                            <li>Aided individuals in finding appropriate products, explaining features, and resolving customer complaints efficiently.</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="section" style="border-bottom: none;">
+                <h2 class="section-title">EDUCATION</h2>
+                <ul class="education-list">
+                    <li class="education-item">
+                        <span class="education-date">2023-2025</span>
+                        <div class="education-degree">BS IN INFORMATION TECHNOLOGY</div>
+                        <div class="education-school">Bestlink College of The Philippines</div>
+                    </li>
+                    <li class="education-item">
+                        <span class="education-date">2021-2023</span>
+                        <div class="education-degree">SENIOR HIGH SCHOOL (STEM TRACK)</div>
+                        <div class="education-school">Colegio De San Lorenzo / College of St. Catherine Quezon City</div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
